@@ -16,14 +16,14 @@ stack* createStack() {
  * @return true if push was successful, false if it failed
  */
 bool push(stack* s, void* itemp) {
-    return appendToList(s->_listp, itemp);
+    return prependToList(s->_listp, itemp);
 }
 
 /**
  * @return a pointer to the element removed from the stack. NULL if no items on the stack
  */
 void* pop(stack* s) {
-    return removeLast(s->_listp);
+    return removeFirst(s->_listp);
 }
 
 /**
@@ -31,7 +31,7 @@ void* pop(stack* s) {
  */
 void* peek(stack* s) {
     if (getListSize(s->_listp)) {
-        return getLast(s->_listp);
+        return getFirst(s->_listp);
     } else {
         return NULL;
     }
@@ -55,6 +55,7 @@ void freeStack(stack* s, bool freeValues) {
 }
 
 void printStack(stack* s, void (*printFunc)(void*)) {
+    printf("Top -> ");
     iterateListValues(s->_listp, printFunc);
-    puts(" <- top");
+    puts("");
 }
