@@ -50,7 +50,7 @@ void clearStack(stack* s, bool freeValues) {
 }
 
 void freeStack(stack* s, bool freeValues) {
-    clearList(s->_listp, freeValues);
+    freeList(s->_listp, freeValues);
     free(s);
 }
 
